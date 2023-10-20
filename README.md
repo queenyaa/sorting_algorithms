@@ -414,4 +414,39 @@ Counting Sort is particularly useful when sorting a collection of integers with 
 In this task, we've implemented Counting Sort to sort an array of non-negative integers in ascending order. The algorithm has been verified with sample test cases to ensure it functions correctly.
 
 
+##Task 7: Merge Sort Algorithm##
+================================================================================
+
+In this task, you are required to implement the Merge Sort algorithm to sort an array of integers in ascending order. Merge Sort is a divide-and-conquer sorting algorithm that recursively divides the array into smaller subarrays, sorts these subarrays, and then merges them back together.
+
+### Implementation Details
+
+1. **Merge Function:** The `merge` function is responsible for merging two sorted subarrays (the left and right subarrays) back into the original array. It iterates through the left and right subarrays, comparing elements, and placing them in the correct order in the original array.
+
+2. **Merge Sort Function:** The `merge_sort` function recursively splits the original array into two halves until the subarrays are small enough to be sorted easily. It then calls the `merge` function to merge the sorted subarrays back into the original array. The process is repeated until the entire array is sorted.
+
+### Usage
+
+To use the Merge Sort algorithm to sort an array, call `merge_sort(array, size)` with your array and its size as arguments. The function will sort the array in ascending order.
+
+### Output
+
+The code includes print statements to visualize the process. It prints the subarrays being split and merged, which can be useful for understanding the algorithm's steps.
+
+### Big O Notation
+
+The time complexity of the Merge Sort algorithm is consistent across best, average, and worst cases:
+
+- **Best Case:** O(n log n)
+- **Average Case:** O(n log n)
+- **Worst Case:** O(n log n)
+
+Merge Sort provides a stable sorting solution with a relatively efficient runtime.
+
+---
+
+The provided solution for Task 7 demonstrates the Merge Sort algorithm in C.
+
+
+
 

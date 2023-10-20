@@ -104,4 +104,50 @@ The sorting process is more efficient when the list is partially sorted or nearl
 This task involves implementing the Insertion Sort algorithm for a doubly linked list and printing the list after each swap to visualize the sorting process. The code provided accomplishes this and should produce the expected output.
 
 
+##Task 2: Selection Sort for an Array of Integers##
+===============================================================================
+
+The goal of this task is to implement the Selection Sort algorithm to sort an array of integers in ascending order. The task also requires printing the array after each time two elements are swapped to visualize the sorting process.
+
+**Function Signature:**
+
+```c
+void selection_sort(int *array, size_t size);
+```
+
+**Parameters:**
+
+- `int *array`: An array of integers to be sorted.
+- `size_t size`: The number of elements in the array.
+
+**Task Requirements:**
+
+1. Sort the array of integers in ascending order using the Selection Sort algorithm.
+2. Print the array after each time two elements are swapped to visualize the sorting process.
+
+**Explanation:**
+
+- The Selection Sort algorithm involves dividing the input array into two parts: the sorted part and the unsorted part. In each iteration, the algorithm selects the smallest element from the unsorted part and moves it to the end of the sorted part.
+
+- The function `selection_sort` begins by iterating through the array. In each iteration, it identifies the smallest element in the unsorted part and swaps it with the element at the current position.
+
+- The `print_array` function is called within this loop to display the array after each swap, as required by the task.
+
+- The outer loop continues until the entire array is sorted.
+
+**Time Complexity Analysis:**
+
+The time complexity of the Selection Sort algorithm for an array is as follows:
+
+- Best Case: O(n^2) - Because it always requires the same number of comparisons and swaps.
+- Average Case: O(n^2) - The algorithm's performance does not depend on the initial order of elements.
+- Worst Case: O(n^2) - Occurs when the array is sorted in reverse order, resulting in the maximum number of comparisons and swaps.
+
+Selection Sort is an inefficient sorting algorithm for large arrays, but it has the advantage of making only one exchange for every pass through the list. It's not suitable for large datasets.
+
+**Conclusion:**
+
+This task involves implementing the Selection Sort algorithm for an array of integers and printing the array after each swap to visualize the sorting process. The code provided accomplishes this and should produce the expected output.
+
+
 

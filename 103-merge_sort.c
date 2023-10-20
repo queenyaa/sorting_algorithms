@@ -2,11 +2,11 @@
 
 /**
  * merge - Merges two subarrays back into the original array
- * @array: the original array
- * @left: the left subarray
- * @right: the right subarray
- * @size_l: size of the left subarray
- * @size_r: size of the right subarray
+ * @strt: the original array
+ * @midd: the left subarray
+ * @end: the right subarray
+ * @left: size of the left subarray
+ * @right: size of the right subarray
  */
 void merge(size_t strt, size_t midd, size_t end, int *right, int *left)
 {

@@ -296,4 +296,53 @@ print_array(array, n);
 The time complexity of Shell Sort depends on the size of the array and the gap sequence. In the worst case, it is O(n^2), but with the Knuth sequence, it has a better average-case performance. The exact time complexity for Shell Sort with the Knuth sequence can vary and is not expressed in Big O notation.
 
 
+##Task 5: Cocktail Shaker sort Algorithm to sort out doubly linked list of integers##
+===================================================================================
+
+To complete Task 5, which involves implementing the Cocktail Shaker Sort algorithm for a doubly linked list of integers, you can follow these steps:
+
+1. Create the `cocktail_sort_list` function according to the provided prototype:
+
+```c
+void cocktail_sort_list(listint_t **list);
+```
+
+2. The function takes a pointer to a pointer to a doubly linked list (`listint_t`). You will not modify the integer values (denoted as `n`) of the nodes but instead swap the nodes themselves.
+
+3. Implement the Cocktail Shaker Sort algorithm on the doubly linked list.
+
+4. The algorithm works by iterating through the list from both ends (left to right and right to left) in alternating passes, swapping adjacent nodes if they are out of order.
+
+5. During each pass, compare adjacent nodes and swap them if necessary. Keep track of whether any swaps occurred in a pass.
+
+6. Continue the passes until no swaps are needed during an entire iteration.
+
+7. Ensure to print the list after each swap operation, as required by the task.
+
+8. Here is a high-level overview of the Cocktail Shaker Sort algorithm for a doubly linked list:
+
+   - Start with a boolean flag to indicate whether any swaps have occurred.
+   - Loop while the flag is true (indicating there are more swaps to be made):
+     - Initialize the flag to false at the beginning of each pass.
+     - Perform a left-to-right pass:
+       - Compare each node with its next node and swap them if they are in the wrong order.
+       - Set the flag to true if a swap occurs.
+     - Perform a right-to-left pass:
+       - Compare each node with its previous node and swap them if they are in the wrong order.
+       - Set the flag to true if a swap occurs.
+     - If no swaps occurred during the pass, exit the loop.
+
+9. After the loop, the doubly linked list will be sorted in ascending order.
+
+10. You can use the provided `print_list` function to print the list after each swap operation.
+
+11. Ensure the function sorts the list correctly and handles edge cases.
+
+12. For the Big O notations in the `101-O` file, you can describe the time complexity in the best case, average case, and worst case for the Cocktail Shaker Sort algorithm applied to a doubly linked list. The exact notations will depend on the specific implementation and any optimizations made.
+
+**Note**: Be aware of edge cases, such as an empty list or a list with only one node.
+
+Once you've implemented and tested the `cocktail_sort_list` function, the task should be complete. Make sure to handle memory allocation and deallocation properly for any dynamically allocated nodes during sorting.
+
+
 

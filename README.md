@@ -345,4 +345,73 @@ void cocktail_sort_list(listint_t **list);
 Once you've implemented and tested the `cocktail_sort_list` function, the task should be complete. Make sure to handle memory allocation and deallocation properly for any dynamically allocated nodes during sorting.
 
 
+##Task 6: Counting Sort Algorithm##
+==================================================================================
+
+In Task 6, we are tasked with implementing the Counting Sort algorithm, a non-comparative sorting algorithm specifically designed for integers with a range of non-negative values. The algorithm counts the occurrences of each unique element in the input array and uses this information to sort the elements in ascending order.
+
+### Function Signature
+
+```c
+void counting_sort(int *array, size_t size);
+```
+
+### Input
+
+- `array`: A pointer to an array of integers.
+- `size`: The number of elements in the array.
+
+### Output
+
+The function modifies the input array to be sorted in ascending order.
+
+### Algorithm
+
+1. Find the maximum value in the input array. This step determines the size of the counting array.
+2. Create a counting array to store the count of occurrences for each unique element in the input array.
+3. Initialize the counting array with zeros.
+4. Count the occurrences of each value in the input array by incrementing the corresponding index in the counting array.
+5. Build a sorted array based on the counting array's information.
+6. Copy the sorted array back to the original input array.
+
+### Pseudocode
+
+```plaintext
+counting_sort(array, size):
+    if size <= 1:
+        return
+
+    max = find_max_value(array)
+    counting = create_array(max + 1, initialized to 0)
+    for i in range(size):
+        counting[array[i]]++
+    sorted = create_array(size)
+    sorted_index = 0
+    for i in range(max + 1):
+        while counting[i] > 0:
+            sorted[sorted_index] = i
+            sorted_index++
+            counting[i]--
+    copy sorted back to array
+```
+
+### Time Complexity
+
+The time complexity of the Counting Sort algorithm depends on the range of input values (`k`) and the number of elements in the input array (`n`).
+
+- Best Case: O(n + k)
+- Average Case: O(n + k)
+- Worst Case: O(n + k)
+
+### Space Complexity
+
+The space complexity of Counting Sort is O(n + k), where `n` is the number of elements in the input array, and `k` is the range of input values.
+
+### Use Cases
+
+Counting Sort is particularly useful when sorting a collection of integers with a relatively small range of values. It is an efficient sorting algorithm when the range (`k`) is not significantly larger than the number of elements (`n`). It is often used as a building block in more complex sorting algorithms and can be adapted for radix sort.
+
+In this task, we've implemented Counting Sort to sort an array of non-negative integers in ascending order. The algorithm has been verified with sample test cases to ensure it functions correctly.
+
+
 

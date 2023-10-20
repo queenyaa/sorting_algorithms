@@ -445,8 +445,54 @@ Merge Sort provides a stable sorting solution with a relatively efficient runtim
 
 ---
 
-The provided solution for Task 7 demonstrates the Merge Sort algorithm in C.
 
+##Task 8: Implementing Heap Sort##
+============================================================================
+
+*Function Signature: void heap_sort(int *array, size_t size);
+
+**Overview:**
+
+Heap Sort is a comparison-based sorting algorithm that uses a binary heap data structure to achieve sorting. It is a part of the selection sort family. The main idea behind Heap Sort is to build a binary heap from the array and then repeatedly remove the maximum element from the heap and add it to the sorted part of the array. 
+
+**Algorithm:**
+
+1. Build a max heap from the array. This is done by repeatedly calling the *heapify* function, starting from the last non-leaf node and working up to the root of the heap. The heapify function ensures that the root of the heap contains the maximum element.
+
+2. Repeatedly remove the maximum element from the heap (which is always the root) and place it at the end of the array. Decrease the size of the heap and call the *heapify* function to maintain the max heap property.
+
+3. Repeat step 2 until the entire array is sorted.
+
+**Time Complexity:**
+
+Heap Sort has a time complexity of O(n * log(n)) in the worst, average, and best cases. This makes it an efficient sorting algorithm for large datasets.
+
+**Space Complexity:**
+
+Heap Sort is an in-place sorting algorithm, meaning it uses constant extra space. This makes it memory-efficient.
+
+**Example:**
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include "sort.h"
+
+int main(void)
+{
+    int array[] = {19, 48, 99, 71, 13, 52, 96, 73, 86, 7};
+    size_t n = sizeof(array) / sizeof(array[0]);
+
+    print_array(array, n);
+    printf("\n");
+    heap_sort(array, n);
+    printf("\n");
+    print_array(array, n);
+    return (0);
+}
+```
+
+This code snippet demonstrates how to use the *heap_sort* function to sort an array of integers in ascending order. The function repeatedly calls *heapify* to build and maintain the max heap while moving elements to their correct positions. The sorted array is printed after each step.
 
 
 

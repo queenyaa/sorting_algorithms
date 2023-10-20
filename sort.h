@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stddef.h>
 
 /**
  * struct listint_s - Doubly linked list done
@@ -33,5 +34,8 @@ void counting_sort(int *array, size_t size);
 void merge_sort(int *array, size_t size);
 void splt_merge(size_t strt, size_t end, int *array, int *sorted);
 void merge(size_t strt, size_t midd, size_t end, int *right, int *left);
+void heapify(int *array, size_t n, size_t x, size_t size);
+void heap_sort(int *array, size_t size);
+void heapitol(int *array, size_t size);
 
 #endif  /* SORT_H */

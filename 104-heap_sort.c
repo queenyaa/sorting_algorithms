@@ -39,9 +39,11 @@ void heapitol(int *array, size_t size)
 {
 	size_t upper;
 
-	for (upper = ((size - 1) - 1) / 2; upper != 0; upper--)
+	for (upper = ((size - 1) - 1) / 2; 1; upper--)
 	{
 		heapify(array, upper, size - 1, size);
+		if (upper == 0)
+			break;
 	}
 
 }

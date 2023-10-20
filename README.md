@@ -246,4 +246,54 @@ The time complexity of the Quick Sort algorithm is as follows:
 The space complexity is O(log n) due to the recursive function call stack.
 
 
+##Task 4: Shell Sort with Knuth Sequence##
+==============================================================================
+
+**Objective:** The goal of this task is to implement a sorting algorithm called Shell Sort using the Knuth sequence to sort an array of integers in ascending order.
+
+**Algorithm Overview:**
+- Shell Sort is an extension of the Insertion Sort algorithm.
+- It works by sorting subarrays defined by a sequence of gap values.
+- The Knuth sequence, denoted as (1, 4, 13, 40, 121, ...), is used to determine the gap values. This sequence starts with 1 and continues by multiplying the previous gap by 3 and adding 1.
+
+**Function Prototype:**
+```c
+void shell_sort(int *array, size_t size);
+```
+
+**Function Description:**
+- `array`: An array of integers to be sorted.
+- `size`: The number of elements in the array.
+
+The function sorts the input array in ascending order using Shell Sort with the Knuth sequence.
+
+**Algorithm Steps:**
+1. Initialize a variable `gap` to 1.
+2. Find the initial gap value using the Knuth sequence: while `gap` is less than one-third of the array size, set `gap` to `gap * 3 + 1`.
+3. Loop over the array with decreasing gap values.
+4. In each iteration, perform an insertion sort on the subarrays defined by the current gap.
+5. Print the array after each step.
+6. Continue decreasing the gap until it reaches 1.
+7. The array will be sorted in ascending order at the end of the process.
+
+**Usage Example:**
+```c
+int array[] = {19, 48, 99, 71, 13, 52, 96, 73, 86, 7};
+size_t n = sizeof(array) / sizeof(array[0]);
+
+print_array(array, n);
+printf("\n");
+shell_sort(array, n);
+printf("\n");
+print_array(array, n);
+```
+
+**Notes:**
+- The Knuth sequence helps in improving the efficiency of the Shell Sort algorithm.
+- Shell Sort is a versatile algorithm and can be used for relatively small to medium-sized arrays.
+
+**Complexity:**
+The time complexity of Shell Sort depends on the size of the array and the gap sequence. In the worst case, it is O(n^2), but with the Knuth sequence, it has a better average-case performance. The exact time complexity for Shell Sort with the Knuth sequence can vary and is not expressed in Big O notation.
+
+
 

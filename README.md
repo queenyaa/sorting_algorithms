@@ -147,7 +147,103 @@ Selection Sort is an inefficient sorting algorithm for large arrays, but it has 
 
 **Conclusion:**
 
+
+##Task 3: Use Quick sort Algorithm to sort an array of integers in ascending order##
+====================================================================================
+
 This task involves implementing the Selection Sort algorithm for an array of integers and printing the array after each swap to visualize the sorting process. The code provided accomplishes this and should produce the expected output.
+
+
+To solve Task 3, you need to implement the Quick Sort algorithm to sort an array of integers in ascending order. The Quick Sort algorithm is known for its efficiency and is commonly used for sorting. Here's a step-by-step guide to solving this task:
+
+## Function Signature
+
+```c
+void quick_sort(int *array, size_t size);
+```
+
+### Input
+
+- `array`: An array of integers to be sorted.
+- `size`: The number of elements in the array.
+
+### Output
+
+The `quick_sort` function sorts the `array` in ascending order in-place. It does not return a value.
+
+## Quick Sort Algorithm
+
+Quick Sort is a divide-and-conquer sorting algorithm that works as follows:
+
+1. Choose a pivot element from the array. In this implementation, the pivot should always be the last element of the partition being sorted.
+
+2. Partition the array into two subarrays: elements less than the pivot and elements greater than the pivot.
+
+3. Recursively apply the Quick Sort algorithm to the two subarrays.
+
+4. Concatenate the sorted subarrays and the pivot to obtain the final sorted array.
+
+## Pseudocode for Quick Sort
+
+Here's the pseudocode for the Quick Sort algorithm:
+
+```plaintext
+QuickSort(arr, low, high):
+    if low < high:
+        pivot_index = Partition(arr, low, high)
+        QuickSort(arr, low, pivot_index - 1)
+        QuickSort(arr, pivot_index + 1, high)
+
+Partition(arr, low, high):
+    pivot = arr[high]  # Choose the last element as the pivot
+    i = low - 1  # Initialize the index of the smaller element
+
+    for j in range(low, high):
+        if arr[j] <= pivot:
+            i = i + 1
+            Swap(arr[i], arr[j])
+
+    Swap(arr[i + 1], arr[high])
+    return i + 1
+```
+
+## Example
+
+Here's an example of how the Quick Sort algorithm can be implemented:
+
+```c
+int array[] = {19, 48, 99, 71, 13, 52, 96, 73, 86, 7};
+size_t n = sizeof(array) / sizeof(array[0]);
+
+print_array(array, n);
+quick_sort(array, n);
+print_array(array, n);
+```
+
+### Output
+
+The code above would produce the following output, showing the array at each step of the sorting process:
+
+Initial Array: [19, 48, 99, 71, 13, 52, 96, 73, 86, 7]
+
+Intermediate Steps (array after swapping elements):
+- [7, 48, 13, 71, 19, 52, 96, 73, 86, 99]
+- [7, 48, 13, 19, 71, 52, 96, 73, 86, 99]
+- [7, 13, 48, 19, 71, 52, 96, 73, 86, 99]
+- [7, 13, 19, 48, 71, 52, 96, 73, 86, 99]
+- [7, 13, 19, 48, 52, 71, 96, 73, 86, 99]
+- [7, 13, 19, 48, 52, 71, 73, 96, 86, 99]
+
+The array is now sorted in ascending order.
+
+## Complexity Analysis
+
+The time complexity of the Quick Sort algorithm is as follows:
+- Best Case: O(n log n)
+- Average Case: O(n log n)
+- Worst Case: O(n^2)
+
+The space complexity is O(log n) due to the recursive function call stack.
 
 
 

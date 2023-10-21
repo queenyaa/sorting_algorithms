@@ -662,4 +662,51 @@ The task focuses on the efficient Quick Sort algorithm, and the Hoare partition 
 
 
 
+##Task 12: Sorting a Deck of Cards##
+=================================================================================
+
+*Prototype: void sort_deck(deck_node_t **deck);*
+
+In this task, you are required to implement a function that sorts a deck of cards. The deck of cards is represented using a doubly linked list. Each card in the deck contains two attributes: a card's value (ranging from "Ace" to "King") and its kind (which can be SPADE, HEART, CLUB, or DIAMOND).
+
+The goal is to sort the deck according to specific criteria:
+
+1. Cards should be ordered from "Ace" to "King."
+2. Cards should be ordered from SPADE to DIAMOND.
+
+**Function Parameters:**
+
+- `deck`: A pointer to a pointer to the first node of the deck. The function modifies this parameter to rearrange the linked list nodes.
+
+**Implementation Details:**
+
+1. The `card_compare` function is a custom comparison function used to compare two cards according to the specified criteria. It is utilized by the `qsort` function.
+
+2. The `sort_deck` function accepts a pointer to the deck and sorts the cards within the linked list.
+
+3. The function first counts the number of nodes in the linked list to determine the size of the deck.
+
+4. It then allocates an array of pointers to deck nodes (`node_array`) to facilitate sorting using `qsort`.
+
+5. The `node_array` is populated with pointers to each deck node for sorting.
+
+6. The `qsort` function is used to sort the `node_array` based on the custom comparison function `card_compare`.
+
+7. The deck is then updated to point to the sorted nodes to achieve the desired order. The pointers between nodes are adjusted accordingly.
+
+8. Finally, the `node_array` is freed to release the allocated memory.
+
+**Sorting Criteria:**
+
+The sorting order is as follows:
+- First, cards are sorted by their kind (SPADE, HEART, CLUB, DIAMOND).
+- Within each kind, the cards are sorted by their value (from "Ace" to "King").
+
+**Note:**
+- The `card_compare` function compares cards based on both kind and value.
+- This task assumes that the deck will always contain 52 cards.
+
+By following these steps, the `sort_deck` function effectively sorts the deck of cards, ensuring that the cards are ordered correctly according to the specified criteria.
+
+To utilize this function, you can provide a pointer to the deck of cards you want to sort, and the function will rearrange the linked list nodes to meet the sorting requirements.
 

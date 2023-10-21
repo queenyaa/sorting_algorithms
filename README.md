@@ -606,4 +606,60 @@ The final sorted array is `[13, 13, 14, 14, 15, 26, 26, 31, 31, 39, 40, 40, 46, 
 The original array will be sorted in ascending order, as shown in the example above. The function should print the array each time two elements are swapped during the sorting process.
 
 
+##Task 11: Quick Sort with Hoare Partition Scheme##
+================================================================================
+
+This task involves implementing the Quick Sort algorithm using Hoare's partition scheme to sort an array of integers in ascending order. Quick Sort is a widely used sorting algorithm known for its efficiency, and the Hoare partition scheme is a variant of Quick Sort that chooses the last element of the partition as the pivot.
+
+**Function Signatures:**
+
+```c
+void quick_sort_hoare(int *array, size_t size);
+```
+
+- **Description:** This function sorts an array of integers in ascending order using the Quick Sort algorithm with the Hoare partition scheme.
+
+- **Parameters:**
+  - `array`: A pointer to the array of integers to be sorted.
+  - `size`: The number of elements in the array.
+
+**Implementation Details:**
+
+1. The `hoare_partition` function is implemented to perform the partitioning of the array using Hoare's partition scheme. It selects the pivot as the last element of the partition, and then rearranges the elements such that all elements less than the pivot are on the left, and all elements greater are on the right.
+
+2. The `hoare_quick_sort` function is the recursive Quick Sort implementation. It recursively calls itself to sort the left and right partitions of the array. The sorting process continues until the array is completely sorted.
+
+3. The main `quick_sort_hoare` function is the entry point for the Quick Sort algorithm. It checks if the input array is valid (not NULL) and has more than one element. Then, it calls the `hoare_quick_sort` function to sort the array.
+
+4. The `quick_sort_hoare` function prints the array after each swap, providing visibility into the sorting process.
+
+**Big O Notations:**
+
+The time complexity of the Quick Sort algorithm is as follows:
+
+- Best case: O(n log n)
+- Average case: O(n log n)
+- Worst case: O(n^2)
+
+**Usage Example:**
+
+```c
+int main(void)
+{
+    int array[] = {19, 48, 99, 71, 13, 52, 96, 73, 86, 7};
+    size_t n = sizeof(array) / sizeof(array[0]);
+
+    print_array(array, n); // Print the initial array
+    quick_sort_hoare(array, n); // Sort the array
+    print_array(array, n); // Print the sorted array
+    return (0);
+}
+```
+
+This program demonstrates the use of the `quick_sort_hoare` function to sort an array of integers in ascending order using the Hoare partition scheme. It prints the array both before and after sorting, showing the step-by-step sorting process.
+
+The task focuses on the efficient Quick Sort algorithm, and the Hoare partition scheme, as well as demonstrating the time complexities of the algorithm in different scenarios.
+
+
+
 

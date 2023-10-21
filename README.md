@@ -555,4 +555,55 @@ The final sorted array is `[2, 24, 45, 66, 75, 90, 170, 802]`.
 The original array will be sorted in ascending order, as shown in the example above.
 
 
+##Task 10: Bitonic Sort##
+===============================================================================
+
+The goal of this task is to implement a sorting algorithm known as Bitonic Sort. This algorithm sorts an array of integers in ascending order and works efficiently for arrays whose size is a power of 2.
+
+**Function Signature:** `void bitonic_sort(int *array, size_t size);`
+
+### Overview
+Bitonic Sort is a comparison-based sorting algorithm that was designed specifically for sorting parallel data. It is known for its regular pattern of comparisons, making it suitable for parallel processing. The algorithm is based on the concept of creating bitonic sequences and then merging them in a specific order to achieve the final sorted array.
+
+### Implementation Details
+1. Bitonic Sort divides the array into smaller sub-arrays, each of which is a bitonic sequence. A bitonic sequence is a sequence that starts with elements in ascending order and is followed by elements in descending order.
+2. The algorithm recursively splits the sub-arrays into smaller bitonic sequences and then merges them in a specific way:
+   - For a bitonic sequence of length 2, no comparisons are needed as it is already sorted.
+   - For longer bitonic sequences, the algorithm performs a series of "bitonic merges," which are based on a specific pattern of comparisons.
+   - The array is first divided into two halves, each of which is a bitonic sequence.
+   - The algorithm recursively sorts both halves.
+   - The sorted halves are then merged to create a single sorted bitonic sequence.
+   - This merging process is performed iteratively until the entire array is sorted.
+3. The bitonic merges are performed using a direction parameter that specifies whether the merge should be in ascending or descending order. The direction alternates with each merge.
+4. The final step is to merge the two sorted halves of the array in ascending order, resulting in a fully sorted array.
+
+### Function Steps
+1. Check if the input array is valid and its size is a power of 2 (2^k, where k is a non-negative integer).
+2. Call a recursive function to perform the bitonic sort, specifying the direction as ascending (initially).
+3. The recursive function:
+   - Checks the base case: If the size of the array is 2, no comparisons are needed.
+   - Divides the array into two halves and recursively sorts them with the opposite direction.
+   - Merges the two sorted halves based on the direction (ascending or descending).
+4. The bitonic merge operation:
+   - Compares elements from both halves according to the direction.
+   - If the elements are in the correct order, they are swapped.
+   - The process continues recursively until the entire array is sorted.
+
+### Complexity Analysis
+The time complexity of Bitonic Sort is O(n * log^2(n)), where n is the size of the array. It is important to note that Bitonic Sort is not the most efficient sorting algorithm for general use, but it is suitable for parallel processing due to its regular pattern of comparisons.
+
+### Example
+Input: `[100, 93, 40, 57, 14, 58, 85, 54, 31, 56, 46, 39, 15, 26, 78, 13]`
+1. The algorithm divides the array into two halves: `[100, 93, 40, 57, 14, 58, 85, 54, 31, 56, 46, 39, 15, 26, 78, 13]` and `[13, 26, 15, 39, 46, 56, 31, 54, 85, 58, 14, 57, 40, 93, 100, 13]`.
+2. It sorts both halves separately:
+   - Left Half (Ascending): `[13, 14, 26, 31, 40, 46, 54, 57, 85, 93, 100]`
+   - Right Half (Descending): `[100, 93, 85, 57, 54, 46, 40, 31, 26, 15, 14, 13]`
+3. The sorted halves are merged in ascending order, resulting in the fully sorted array.
+
+The final sorted array is `[13, 13, 14, 14, 15, 26, 26, 31, 31, 39, 40, 40, 46, 46, 54, 54, 57, 57, 58, 85, 85, 93, 93, 100, 100]`.
+
+### Output
+The original array will be sorted in ascending order, as shown in the example above. The function should print the array each time two elements are swapped during the sorting process.
+
+
 

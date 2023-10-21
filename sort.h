@@ -40,5 +40,11 @@ void heapitol(int *array, size_t size);
 void count_sort(int *array, size_t size, int digit);
 void radix_sort(int *array, size_t size);
 int find_max(int *array, size_t size);
+void bitonic_sort(int *array, size_t size);
+void bsr(int *array, size_t size, int dir);
+void bmrg(int *array, size_t size, int dir, size_t beg, size_t end);
+void _mrg(int *array, size_t beg, size_t mid, size_t end, int dir);
+void _dsc(int *array, size_t beg, size_t mid, size_t end);
+void _asc(int *array, size_t beg, size_t mid, size_t end);
 
 #endif  /* SORT_H */

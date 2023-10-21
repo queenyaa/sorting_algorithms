@@ -37,5 +37,8 @@ void merge(size_t strt, size_t midd, size_t end, int *right, int *left);
 void heapify(int *array, size_t n, size_t x, size_t size);
 void heap_sort(int *array, size_t size);
 void heapitol(int *array, size_t size);
+void count_sort(int *array, size_t size, int digit);
+void radix_sort(int *array, size_t size);
+int find_max(int *array, size_t size);
 
 #endif  /* SORT_H */

@@ -495,4 +495,64 @@ int main(void)
 This code snippet demonstrates how to use the *heap_sort* function to sort an array of integers in ascending order. The function repeatedly calls *heapify* to build and maintain the max heap while moving elements to their correct positions. The sorted array is printed after each step.
 
 
+##Task 9: Radix Sort##
+==============================================================================
+
+The goal of this task is to implement a sorting algorithm known as Radix Sort. This algorithm sorts an array of integers in ascending order, assuming that the array contains only non-negative numbers.
+
+**Function Signature:** `void radix_sort(int *array, size_t size);`
+
+### Overview
+Radix Sort is a non-comparative sorting algorithm that works by sorting numbers one digit at a time, starting from the least significant digit (LSD) to the most significant digit (MSD). It is based on the idea that if you sort digits at each position of the numbers, the overall array will be sorted.
+
+### Implementation Details
+1. Create an array to store the output.
+2. Find the maximum number in the array to determine the number of digits in the maximum number.
+3. For each digit place, starting from the least significant digit to the most significant digit:
+   - Use Counting Sort to sort the array based on the current digit.
+   - For each digit place (from LSD to MSD), perform the following steps:
+     - Count the occurrences of each digit (0 to 9) at that place in the current number.
+     - Update the count array to keep track of how many numbers have a particular digit at the current place.
+     - Calculate the cumulative sum of the counts to determine the correct position for each number in the output array.
+     - Copy the numbers to the output array according to their positions, and update the count array.
+     - Copy the numbers from the output array back to the original array.
+
+### Function Steps
+1. Find the maximum number in the array to determine the number of digits in the maximum number.
+2. Iterate through each digit place (from LSD to MSD).
+3. Use Counting Sort to sort the array based on the current digit.
+4. Repeat this process for all digit places, and the array will be sorted in ascending order.
+
+### Pseudocode
+```c
+function radix_sort(array, size):
+    Find the maximum number in the array (max_num)
+    for each digit_place from 1 to the number of digits in max_num:
+        Count the occurrences of each digit at the current place in the numbers
+        Calculate the cumulative sum of the counts
+        Copy the numbers to the output array based on their positions
+        Copy the numbers from the output array back to the original array
+```
+
+### Complexity Analysis
+The time complexity of Radix Sort is O(d * (n + k)), where:
+- d is the number of digits in the maximum number (d is usually a small constant).
+- n is the size of the array.
+- k is the range of digits (in this case, 10 for decimal digits).
+
+Radix Sort is efficient when d is small compared to n, and it has a stable performance in practice.
+
+### Example
+Input: `[170, 45, 75, 90, 802, 24, 2, 66]`
+1. Find the maximum number (802) and determine the number of digits (3).
+2. Sort the numbers based on the least significant digit (1's place): `[170, 90, 802, 2, 24, 45, 75, 66]`
+3. Sort the numbers based on the next digit (10's place): `[2, 24, 45, 66, 170, 75, 90, 802]`
+4. Sort the numbers based on the most significant digit (100's place): `[2, 24, 45, 66, 75, 90, 170, 802]`
+
+The final sorted array is `[2, 24, 45, 66, 75, 90, 170, 802]`.
+
+### Output
+The original array will be sorted in ascending order, as shown in the example above.
+
+
 

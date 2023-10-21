@@ -4,6 +4,7 @@
  * find_max - find the max element in the array
  * @array: the array
  * @size: size of the array
+ * Return: Max element
  */
 int find_max(int *array, size_t size)
 {
@@ -38,7 +39,7 @@ void count_sort(int *array, size_t size, int digit)
 		count[x] += count[x - 1];
 	for (x = size - 1; x >= 0; x--)
 	{
-		output[count[(array[x] / digit) % 10 ] - 1] = array[x];
+		output[count[(array[x] / digit) % 10] - 1] = array[x];
 		count[(array[x] / digit) % 10]--;
 	}
 	for (y = 0; y < size; y++)
@@ -48,7 +49,7 @@ void count_sort(int *array, size_t size, int digit)
 
 /**
  * radix_sort - main radix sort function
- * @arrray: the array
+ * @array: the array
  * @size: size of the array
  */
 void radix_sort(int *array, size_t size)

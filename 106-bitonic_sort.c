@@ -53,13 +53,13 @@ void bit_sorting(char dir, int *array, size_t size, size_t q)
 {
 	if (size < 2)
 		return;
-	printf("Merging [%lu/%lu] (%s):\n", size, q, (dir == 1) ? "UP": \
+	printf("Merging [%lu/%lu] (%s):\n", size, q, (dir == 1) ? "UP" :
 			"DOWN");
 	print_array(array, size);
 	bit_sorting(1, array, size / 2, q);
 	bit_sorting(0, array + (size / 2), size / 2, q);
 	bit_merge(dir, array, size);
-	printf("Result [%lu/%lu] (%s):\n", size, q, (dir == 1) ? "UP" : \
+	printf("Result [%lu/%lu] (%s):\n", size, q, (dir == 1) ? "UP" :
 			"DOWN");
 	print_array(array, size);
 }

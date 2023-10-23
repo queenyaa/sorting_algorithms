@@ -25,32 +25,32 @@ int _strcmp(const char *s1, const char *s2)
  */
 char card_value(deck_node_t *card)
 {
-        if (_strcmp(card->card->value, "Ace") == 0)
+	if (_strcmp(card->card->value, "Ace") == 0)
 		return (0);
 	if (_strcmp(card->card->value, "1") == 0)
 		return (1);
 	if (_strcmp(card->card->value, "2") == 0)
-                return (2);
+		return (2);
 	if (_strcmp(card->card->value, "3") == 0)
-                return (3);
+		return (3);
 	if (_strcmp(card->card->value, "4") == 0)
-                return (4);
+		return (4);
 	if (_strcmp(card->card->value, "5") == 0)
-                return (5);
+		return (5);
 	if (_strcmp(card->card->value, "6") == 0)
-                return (6);
+		return (6);
 	if (_strcmp(card->card->value, "7") == 0)
-                return (7);
+		return (7);
 	if (_strcmp(card->card->value, "8") == 0)
-                return (8);
+		return (8);
 	if (_strcmp(card->card->value, "9") == 0)
-                return (9);
+		return (9);
 	if (_strcmp(card->card->value, "10") == 0)
-                return (10);
+		return (10);
 	if (_strcmp(card->card->value, "Jack") == 0)
-                return (11);
+		return (11);
 	if (_strcmp(card->card->value, "Queen") == 0)
-                return (12);
+		return (12);
 	return (13);
 }
 
@@ -88,9 +88,7 @@ void list_deck(deck_node_t **deck)
 
 /**
  * swap_n - function to swap two nodes in a doubly-linked list
- * @deck:
- * @node1: 1st nodes
- * @node2: 2nd nodes
+ * @deck: pointer to the head
  * Return: nothing
  */
 void swap_n(deck_node_t **deck)
@@ -103,7 +101,7 @@ void swap_n(deck_node_t **deck)
 		insid = runn->prev;
 		while (insid != NULL &&
 				insid->card->kind == runn->card->kind &&
-                		card_value(insid) > card_value(runn))
+				card_value(insid) > card_value(runn))
 		{
 			insid->next = runn->next;
 			if (runn->next != NULL)

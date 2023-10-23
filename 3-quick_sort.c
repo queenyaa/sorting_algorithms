@@ -1,6 +1,20 @@
 #include "sort.h"
 
 /**
+ * swap_heap - swap integers in an array
+ * @arr: first int to swap
+ * @siz: second int to swap
+ */
+void swap_heap(int *arr, int *siz)
+{
+	int temp;
+
+	temp = *arr;
+	*arr = *siz;
+	*siz = temp;
+}
+
+/**
  * lomuto_partition - Partitions an array using the Lomuto partition
  * scheme
  * @array: the array to be partitioned
@@ -11,32 +25,27 @@
  */
 int lomuto_partition(int *array, int low, int high, size_t size)
 {
-	int pivot = array[high];
-	int x = low - 1;
-	int y, temp;
+	int *pivot, x, y;
 
-	for (y = low; y <= high - 1; y++)
+	pivot = array + high;
+	for (y = x = low; x < high; x++)
 	{
-		if (array[y] < pivot)
+		if (array[x] < *pivot)
 		{
-			y++;
-			if (x != y)
+			if (y < x)
 			{
-				temp = array[x];
-				array[x] = array[y];
-				array[y] = temp;
+				swap_heap(array + x, array + y);
 				print_array(array, size);
 			}
+			y++;
 		}
 	}
-	if (array[x + 1] != array[high])
+	if (array[y] > *pivot)
 	{
-		temp = array[x + 1];
-		array[x + 1] = array[high];
-		array[high] = temp;
+		swap_heap(array + y, pivot);
 		print_array(array, size);
 	}
-	return (x + 1);
+	return (y);
 }
 
 /**
@@ -51,11 +60,10 @@ void quick_sort_recursive(int *array, int low, int high, size_t size)
 {
 	int pivot;
 
-	if (low < high)
+	if (high - low > 0)
 	{
 		pivot = lomuto_partition(array, low, high, size);
-		if (pivot > low)
-			quick_sort_recursive(array, low, pivot - 1, size);
+		quick_sort_recursive(array, low, pivot - 1, size);
 		quick_sort_recursive(array, pivot + 1, high, size);
 	}
 }

@@ -8,58 +8,82 @@
  */
 int _strcmp(const char *s1, const char *s2)
 {
-	while (*s1 == *s2)
+	while (*s1 && *s2 && *s1 == *s2)
 	{
-		if (*s1 == '\0')
-			return (0);
 		s1++;
 		s2++;
 	}
-	return (*s1 - *s2);
-}
-
-/**
- * list_deck - function to return length of list
- * @list: head of list
- *
- * Return: length
- */
-size_t list_deck(deck_node_t *list)
-{
-	size_t big = 0;
-
-	while (list)
-	{
-		big++;
-		list = list->next;
-	}
-	return (big);
+	if (*s1 != *s2)
+		return (*s1 - *s2);
+	return (0);
 }
 
 /**
  * card_value - returns the card value
- * @node: card in a deck
+ * @card: card in a deck
  * Return: value between 1 and 52
  */
-int card_value(deck_node_t *node)
+char card_value(deck_node_t *card)
 {
-	char *heavy[13] = {"Ace", "2", "3", "4", "5", "6",
-		"7", "8", "9", "10", "Jack", "Queen", "King"};
-	char *typ[4] = {"SPADE", "HEART", "CLUB", "DIAMOND"};
-	int x, typ_heavy = 0;
+        if (_strcmp(card->card->value, "Ace") == 0)
+		return (0);
+	if (_strcmp(card->card->value, "1") == 0)
+		return (1);
+	if (_strcmp(card->card->value, "2") == 0)
+                return (2);
+	if (_strcmp(card->card->value, "3") == 0)
+                return (3);
+	if (_strcmp(card->card->value, "4") == 0)
+                return (4);
+	if (_strcmp(card->card->value, "5") == 0)
+                return (5);
+	if (_strcmp(card->card->value, "6") == 0)
+                return (6);
+	if (_strcmp(card->card->value, "7") == 0)
+                return (7);
+	if (_strcmp(card->card->value, "8") == 0)
+                return (8);
+	if (_strcmp(card->card->value, "9") == 0)
+                return (9);
+	if (_strcmp(card->card->value, "10") == 0)
+                return (10);
+	if (_strcmp(card->card->value, "Jack") == 0)
+                return (11);
+	if (_strcmp(card->card->value, "Queen") == 0)
+                return (12);
+	return (13);
+}
 
-	for (x = 1; x <= 13; x++)
-	{
-		if (!_strcmp(node->card->value, heavy[x - 1]))
-			typ_heavy = x;
-	}
-	for (x = 1; x <= 4; x++)
-	{
-		if (!_strcmp(typ[node->card->kind], typ[x - 1]))
-			typ_heavy = typ_heavy + (13 * x);
-	}
-	return (typ_heavy);
 
+/**
+ * list_deck - function to return length of list
+ * @deck: head of list
+ *
+ * Return: length
+ */
+void list_deck(deck_node_t **deck)
+{
+	deck_node_t *runn, *insid, *temp;
+
+	for (runn = (*deck)->next; runn != NULL; runn = temp)
+	{
+		temp = runn->next;
+		insid = runn->prev;
+		while (insid != NULL && insid->card->kind > runn->card->kind)
+		{
+			insid->next = runn->next;
+			if (runn->next != NULL)
+				runn->next->prev = insid;
+			runn->prev = insid->prev;
+			runn->next = insid;
+			if (insid->prev != NULL)
+				insid->prev->next = runn;
+			else
+				*deck = runn;
+			insid->prev = runn;
+			insid = runn->prev;
+		}
+	}
 }
 
 /**
@@ -69,32 +93,31 @@ int card_value(deck_node_t *node)
  * @node2: 2nd nodes
  * Return: nothing
  */
-void swap_n(deck_node_t **deck, deck_node_t *node1, deck_node_t *node2)
+void swap_n(deck_node_t **deck)
 {
-	deck_node_t *temp;
+	deck_node_t *runn, *insid, *temp;
 
-	if (!deck || !node1 || !node2)
-		return;
-	if (node1->prev)
-		node1->prev->next = node2;
-	else
-		*deck = node2;
-	if (node2->prev)
-		node2->prev->next = node1;
-	else
-		*deck = node1;
-	if (node1->next)
-		node1->next->prev = node2;
-	if (node2->next)
-		node2->next->prev = node1;
-
-	temp = node1->prev;
-	node1->prev = node2->prev;
-	node2->prev = temp;
-
-	temp = node1->next;
-	node1->next = node2->next;
-	node2->next = temp;
+	for (runn = (*deck)->next; runn != NULL; runn = temp)
+	{
+		temp = runn->next;
+		insid = runn->prev;
+		while (insid != NULL &&
+				insid->card->kind == runn->card->kind &&
+                		card_value(insid) > card_value(runn))
+		{
+			insid->next = runn->next;
+			if (runn->next != NULL)
+				runn->next->prev = insid;
+			runn->prev = insid->prev;
+			runn->next = insid;
+			if (insid->prev != NULL)
+				insid->prev->next = runn;
+			else
+				*deck = runn;
+			insid->prev = runn;
+			insid = runn->prev;
+		}
+	}
 }
 
 /**
@@ -103,28 +126,9 @@ void swap_n(deck_node_t **deck, deck_node_t *node1, deck_node_t *node2)
  */
 void sort_deck(deck_node_t **deck)
 {
-	deck_node_t *now, *left = NULL;
-	int swapp;
-
-	if (!deck || !*deck)
+	if (deck == NULL || *deck == NULL || (*deck)->next == NULL)
 		return;
 
-	do
-	{
-		swapp = 0;
-		now = *deck;
-
-		while (now->next != left)
-		{
-			if (card_value(now) > card_value(now->next))
-			{
-				swap_n(deck, now, now->next);
-				swapp = 1;
-			}
-			else
-				now = now->next;
-		}
-		left = now;
-	}
-	while (swapp);
+	list_deck(deck);
+	swap_n(deck);
 }

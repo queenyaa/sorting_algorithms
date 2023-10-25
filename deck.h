@@ -8,7 +8,7 @@
  * enum kind_e - Enumeration of card suits
  * @SPADE: Spade suit
  * @HEART: Hearts suit
- * @CULB: clubs suit
+ * @CLUB: clubs suit
  * @DIAMOND: Diamonds suit
  */
 typedef enum kind_e
